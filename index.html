@@ -1,59 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earn Money</title>
+    <title>Moneezee - Earn Money</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
             color: #333;
+            line-height: 1.6;
         }
+
         header {
-            background-color: #0044cc; /* Dark Blue */
+            background: linear-gradient(to right, #1a73e8, #4a90e2);
             color: white;
             padding: 20px 0;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/light-wool.png');
+            opacity: 0.2; /* Adjust the opacity to make the texture subtle */
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            position: relative;
+            background: -webkit-linear-gradient(#ffca28, #ff5722);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: textAnimate 4s ease-in-out infinite;
+        }
+
+        @keyframes textAnimate {
+            0% {
+                letter-spacing: 1px;
+            }
+            50% {
+                letter-spacing: 4px;
+            }
+            100% {
+                letter-spacing: 1px;
+            }
+        }
+
         nav {
-            background-color: #ffd700; /* Yellow */
+            background-color: #fff;
             padding: 10px 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             position: relative;
         }
+
         nav ul {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
         }
+
         nav ul li {
             margin: 0;
         }
+
         nav ul li a {
-            color: #0044cc; /* Dark Blue */
+            color: #1a73e8;
             text-decoration: none;
             padding: 10px 20px;
             display: block;
+            font-weight: 500;
             transition: background-color 0.3s, color 0.3s;
         }
+
         nav ul li a:hover {
-            background-color: #0044cc; /* Dark Blue */
+            background-color: #1a73e8;
             color: white;
+            border-radius: 4px;
         }
+
+        .hero {
+            background-color: #f1f3f4;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: #1a73e8;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            padding: 15px 30px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: #1558c0;
+        }
+
         .drawer {
             display: none;
             position: fixed;
             top: 0;
             right: 0;
-            width: 250px;
+            width: 300px;
             height: 100%;
-            background-color: #0044cc; /* Dark Blue */
+            background-color: #1a73e8;
             color: white;
             padding: 20px;
             box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
@@ -61,29 +140,37 @@
             transition: transform 0.3s;
             transform: translateX(100%);
         }
+
         .drawer.active {
             transform: translateX(0);
         }
+
         .drawer h3 {
             margin-top: 0;
-            color: #ffd700; /* Yellow */
+            color: #ffca28;
         }
+
         .drawer ul {
             list-style: none;
             padding: 0;
             margin: 20px 0;
         }
+
         .drawer ul li {
             margin-bottom: 15px;
         }
+
         .drawer ul li a {
             color: white;
             text-decoration: none;
             display: block;
+            font-weight: 500;
         }
+
         .drawer ul li a:hover {
             text-decoration: underline;
         }
+
         .drawer .close-drawer {
             background-color: transparent;
             border: none;
@@ -94,64 +181,92 @@
             right: 10px;
             cursor: pointer;
         }
+
         main {
             padding: 20px;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
         }
+
         section {
             margin-bottom: 40px;
             background-color: white;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Make sections clickable */
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
+
+        section:hover {
+            background-color: #f1f3f4;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
         section h2 {
-            color: #0044cc; /* Dark Blue */
-            border-bottom: 2px solid #ffd700; /* Yellow */
+            color: #1a73e8;
+            border-bottom: 2px solid #ffca28;
             padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
         }
+
         button {
             padding: 10px 20px;
-            background-color: #0044cc; /* Dark Blue */
+            background-color: #1a73e8;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 1em;
             transition: background-color 0.3s;
         }
+
         button:hover {
-            background-color: #003399; /* Darker Blue */
+            background-color: #1558c0;
         }
+
         footer {
-            background-color: #0044cc; /* Dark Blue */
+            background-color: #1a73e8;
             color: white;
             text-align: center;
             padding: 20px 0;
             margin-top: 40px;
         }
+
         footer h2 {
             margin-top: 0;
+            font-size: 1.5em;
         }
-        input[type="tel"], input[type="text"] {
-            padding: 10px;
+
+        input[type="tel"],
+        input[type="text"] {
+            padding: 12px;
             margin: 10px 0;
             width: 100%;
             max-width: 400px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 1em;
         }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>Earn Money</h1>
+        <h1>Moneezee</h1>
     </header>
     <nav>
         <ul>
             <li><a href="javascript:void(0);" onclick="toggleDrawer()">Menu</a></li>
         </ul>
     </nav>
+
+    <div class="hero">
+        <h1>Welcome to Moneezee</h1>
+        <p>Your gateway to earning money online. Unlock multiple streams of income with just a few clicks.</p>
+        <button onclick="window.location.href='#ads'">Start Earning Now</button>
+    </div>
 
     <!-- Drawer menu -->
     <div class="drawer" id="drawer">
@@ -167,21 +282,21 @@
     </div>
 
     <main>
-        <section id="freelance">
+        <section id="freelance" onclick="showUnlockMessage('Freelance Work')">
             <h2>Freelance Work</h2>
-            <p>This option will be unlocked at Level 5. To reach the next level, watch 10 ads.</p>
+            <p>Freelancing is a versatile and independent work model where individuals provide specialized services to various clients on a project-by-project basis. As self-employed professionals, freelancers enjoy the flexibility to select projects, set their own schedules, and work from any location. This approach not only fosters creativity and autonomy but also allows for personalized career development. Freelancers can work in diverse fields such as writing, graphic design, web development, and consulting. By building a diverse portfolio and establishing strong client relationships, freelancers create unique opportunities for growth and success in their careers, making freelancing an attractive choice for many..</p>
         </section>
-        <section id="surveys">
+        <section id="surveys" onclick="showUnlockMessage('Surveys')">
             <h2>Surveys</h2>
-            <p>This option will be unlocked at Level 5. To reach the next level, watch 10 ads.</p>
+            <p>Earning money through online surveys is a straightforward way to make extra income. By signing up with survey platforms like Moneezee, you can participate in surveys that provide valuable consumer feedback to businesses. To start, create a free account, complete your profile, and begin receiving survey invitations. Each completed survey earns you points or cash, which can be redeemed for rewards such as gift cards. Consistent participation and honest responses increase your chances of qualifying for more surveys. While not a full-time income solution, online surveys offer a flexible and convenient method to earn additional money in your spare time.</p>
         </section>
-        <section id="gigs">
+        <section id="gigs" onclick="showUnlockMessage('Gigs')">
             <h2>Gigs</h2>
-            <p>This option will be unlocked at Level 5. To reach the next level, watch 10 ads.</p>
+            <p>Earning money through gigs involves offering short-term, flexible services or tasks to clients, often via online platforms like Fiverr or Upwork. Gigs can range from freelance writing and graphic design to programming and virtual assistance. To get started, create a profile on a gig platform, showcase your skills, and set up service offerings. Clients will hire you based on your expertise and ratings. Deliver high-quality work to build a strong reputation and secure repeat business. While gig work offers flexibility and diverse opportunities, it requires self-discipline, time management, and marketing skills to maximize earnings and maintain a steady stream of projects.</p>
         </section>
-        <section id="selling">
+        <section id="selling" onclick="showUnlockMessage('Selling Products')">
             <h2>Selling Products</h2>
-            <p>This option will be unlocked at Level 5. To reach the next level, watch 10 ads.</p>
+            <p>Selling products online is a popular way to earn money by reaching a global audience through e-commerce platforms. Start by choosing a product to sell, whether it's handmade goods, dropshipping items, or digital products. Set up an online store on platforms like Etsy, eBay, or Shopify, and list your products with appealing descriptions and images. Promote your store through social media, SEO, and online advertising to attract customers. Monitor sales and customer feedback to refine your offerings. Effective online selling requires good marketing strategies, competitive pricing, and excellent customer service to build a successful and profitable business.</p>
         </section>
         <section id="ads">
             <h2>Earn Money by Watching Ads</h2>
@@ -190,23 +305,29 @@
             <p id="ads-watched">Ads watched: 0/10</p>
         </section>
         <section id="bank-details">
-            <h2>Bank Details</h2>
-            <p>To receive your earnings, please provide your bank account details below:</p>
+            <h2>Sign up</h2>
+            <p><b>Sign up to start earning now!!</b></p>
             <form>
+                <label for="Enter your first name">First name:</label><br>
+                <input type="text" id="first-name" placeholder="Enter first name"><br>
+                <label for="Enter your last name">Last name:</label><br>
+                <input type="text" id="last-name" placeholder="Enter last name"><br>
+                <label for="phone-number">Phone Number:</label><br>
+                <input type="tel" id="phone-number" placeholder="Enter your phone number"><br> 
+                 <label for="Zip code ">Zip code:</label><br>
+                <input type="text" id="Zip-code" placeholder="Enter your Zip code"><br>
                 <label for="account-number">Bank Account Number:</label><br>
                 <input type="text" id="account-number" placeholder="Enter your bank account number"><br>
                 <label for="ifsc-code">IFSC Code:</label><br>
                 <input type="text" id="ifsc-code" placeholder="Enter IFSC code"><br>
-                <label for="phone-number">Phone Number:</label><br>
-                <input type="tel" id="phone-number" placeholder="Enter your phone number"><br>
                 <button type="submit" onclick="window.location.href='https://youtube.com/shorts/i2_KvAi8h4M?feature=shared'">Submit Bank Details</button>
             </form>
         </section>
     </main>
     <footer>
-        <h2>Get Started</h2>
-        <p>Enter your phone number to receive more information:</p>
-        <input type="tel" id="footer-phone-number" placeholder="Phone Number">
+        <h2>Get in touch </h2>
+        <p>Enter your email address to receive more information:</p>
+        <input type="tel" id="footer-email-adress" placeholder="Email address ">
         <button onclick="window.location.href='https://youtube.com/shorts/i2_KvAi8h4M?feature=shared'">Submit</button>
     </footer>
 
@@ -215,6 +336,10 @@
             const drawer = document.getElementById('drawer');
             drawer.classList.toggle('active');
         }
+
+        function showUnlockMessage(option) {
+            alert(option + " will be unlocked at Level 5. To reach the next level, watch 10 ads.");
+        }
     </script>
 </body>
-</html>
+</html> 
